@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+*{
+    box-sizing:border-box
+}
+:root{
+    --cell-size:100px;
+    --mark-size:calc(var(--cell-size)*.9);
+}
+
+body{
+
+    margin:0;
+    padding:0;
+    font-family:'Bubblegum Sans', cursive;
+}
+.game-container{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+    padding:50px;
+}
+.game-container h1{
+    font-size:60px;
+
+}
+#restartButton{
+    font-size:2rem;
+    background-color:white;
+    border:1px solid black;
+    padding:.15rem .5rem; 
+    font-family:'Bubblegum Sans', cursive;
+    cursor:pointer;
+}
+#restartButton:hover{
+    background-color:black;
+    color:white;
+    border-color:white;
+}
+.board{
+    height:100vh;
+    width:100vw;
+    display:grid;
+    justify-content:center;
+    align-content:center;
+    grid-template-columns:repeat(3,auto);
+
+    
+}
+
+.cell{
+    height:var(--cell-size);
+    width:var(--cell-size);
+    border:1px solid black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    position:relative;
+
+
+
+}
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top:none;
+}
+.cell:nth-child(3n+1){
+    border-left:none;
+}
+.cell:nth-child(3n+3){
+    border-right:none;
+}
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:last-child{
+    border-bottom:none;
+}
+
+
+.cell.x::before,
+.cell.x::after{
+    content:'';
+    width:calc(var(--mark-size)*.15);
+    height:var(--mark-size);
+    background-color:black;
+    position:absolute;
+}
+.cell.x::before{
+    transform:rotate(45deg);
+}
+.cell.x::after{
+    transform:rotate(-45deg);
+}
+.cell.circle::before,
+.cell.circle::after{
+    content:'';
+    position:absolute;
+    border-radius:50%;
+   
+}
+
+.cell.circle::before{
+    width:var(--mark-size);
+    height:var(--mark-size);
+    background-color:black;
+}
+.cell.circle::after{
+    width:calc(var(--mark-size)*.7);
+    height:calc(var(--mark-size)*.7);
+    background-color:white;
+}
+
+
+.cell.x,
+.cell.circle{
+    cursor:not-allowed;
+}
+
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after{
+    content:'';
+    position:absolute;
+    width:calc(var(--mark-size)*.15);
+    height:var(--mark-size);
+    background-color:lightgrey;
+}
+.board.x .cell:not(.x):not(.circle):hover::before
+{
+    transform:rotate(45deg);
+
+}
+.board.x .cell:not(.x):not(.circle):hover::after
+{
+    transform:rotate(-45deg);
+
+}
+
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after{
+    content:'';
+    position:absolute;
+    border-radius:50%;
+}
+.board.circle .cell:not(.x):not(.circle):hover::before{
+    width:var(--mark-size);
+    height:var(--mark-size);
+    background-color:lightgray;
+}
+.board.circle .cell:not(.x):not(.circle):hover::after{
+    width:calc(var(--mark-size)*.7);
+    height:calc(var(--mark-size)*.7);
+    background-color:white;
+}
+
+
+/*by vertraxumtes
